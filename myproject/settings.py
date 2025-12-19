@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'student_management.apps.StudentManagementConfig',
     'corsheaders',
+    'rest_framework',
 
 ]
 
