@@ -27,9 +27,24 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
-CORS_ALLOW_ORIGINS =  ["http://localhost:3000",  # for dev
-    "https://https://student-management-rouge-ten.vercel.app/",]
+CORS_ALLOW_ORIGINS =  [
+    "http://localhost:3000",  # for dev
+    "https://https://student-management-rouge-ten.vercel.app/",
+]
+CORS_ALLOW_CREDENTIALS = True
+CORS_ALLOW_HEADERS = [
+    'content-type',
+    'authorization',
+]
 
+CORS_ALLOW_METHODS = [
+    'GET',
+    'POST',
+    'PUT',
+    'PATCH',
+    'DELETE',
+    'OPTIONS',
+]
 # Application definition
 
 INSTALLED_APPS = [
@@ -39,23 +54,26 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'student_management.apps.StudentManagementConfig',
-    'corsheaders',
-    'rest_framework',
 
+    'rest_framework',
+    'corsheaders',
+
+    'student_management',
 ]
 
+
 MIDDLEWARE = [
-    "corsheaders.middleware.CorsMiddleware",
+    'corsheaders.middleware.CorsMiddleware',   # MUST BE FIRST
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-
 ]
+
 
 ROOT_URLCONF = 'myproject.urls'
 
